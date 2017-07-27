@@ -1,0 +1,36 @@
+html {
+	font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei","Helvetica Neue",Arial,sans-serif;
+}
+body, h1, h2, h3, h4, h5, p, dl, dd, ul, ol, form, input, textarea, th, td {
+    margin: 0;
+    padding: 0;
+}
+em, i {
+    font-style: normal;
+}
+li {
+    list-style: outside none none;
+}
+td, th {
+    text-align: center;
+}
+strong {
+    font-weight: normal;
+}
+a, a:hover, a:focus {
+    text-decoration: none;
+}
+img {
+    border: medium none;
+    vertical-align: top;
+}
+table {
+    border-collapse: collapse;
+}
+input, textarea, button, select, a {
+    outline: medium none !important;
+}
+textarea {
+    overflow: auto !important;
+    resize: none;
+}

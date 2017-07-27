@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    	<div id="box"></div>
+    	<script id="ejsTemplate">
+	    	
+    		<div>
+    			<%='姓名：' + name%>
+    			<%='年龄：' + age%>
+    		</div>
+	    	<ul>
+    		<%if (isShowSource) {%>
+    			<%for(var i = 0; i < source.length; i++) {%>
+    				<li><%=source[i]%></li>
+    			<%}%>
+	    	<%} else {%>
+	    		<li>test</li>
+	    	<%}%>
+	    	</ul>
+    	</script>
+    </body>
+    <script type="text/javascript" src="./jquery-2.0.3.js"></script>
+    <script src="./ejs.js"></script>
+    <script>
+    	var data = {
+    		header: 'header',
+    		footer: 'footer',
+    		name: '张三',
+    		age: '18',
+    		isShowSource: true,
+    		source: [
+    			'语文: 60',
+    			'数学: 60',
+    			'英语: 60',
+    			]
+    	};
+    	var getHtml = document.getElementById('ejsTemplate').innerHTML;
+
+    	// compile方法
+    	var template = ejs.compile(getHtml);
+    	var setHtml = template(data);
+    	document.getElementById('box').innerHTML = setHtml;
+
+    	// render方法
+    	// var setHtml = ejs.render(getHtml, data);
+    	// document.getElementById('box').innerHTML = setHtml;
+    	$('#box').on('click', 'li', function(ev) {
+    		alert(ev.target.innerHTML);
+    	});
+    </script>
+</html>

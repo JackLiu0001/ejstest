@@ -1,0 +1,21 @@
+/*
+* @Author: liushaofei
+* @Date:   2017-07-12 17:32:49
+* @Last Modified by:   liushaofei
+* @Last Modified time: 2017-07-26 16:44:49
+*/
+.cta-father {
+	min-width: 986px;
+	border: 1px solid black;
+	color: #666;
+}
+.cta-nav {
+	height: 52px;
+	background: #173566;
+	border: 1px solid black;
+	color: #acbacf;
+}
+.cta-nav-items {
+	width: 400px;
+	border: 1px solid black;
+}
