@@ -32,6 +32,53 @@ app.use(webpackHotMiddleware(compiler, {
 	log: console.log, path: '/__webpack_hmr', heartbeat: 10 * 1000
 }));
 
+// app.use('*', function(req, res, next) {
+// 	// console.log(req);
+// 	console.log('baseurl', req.baseUrl);
+// 	console.log('path', req.path);
+// 	next();
+// });
+var webshot = require('webshot');
+var fs = require('fs');
+app.use('*', function(req, res, next) {
+	// webshot('http://res.kpns.ijinshan.com/res/20140303/139382261948529.html', './screenshot/google.png', function(err) {
+	// 	// screenshot now saved to google.png 
+	// 	console.log(111);
+	// 	console.log(err);
+	// });
+
+
+	var renderStream = webshot('google.com');
+	var file = fs.createWriteStream('google.png', {encoding: 'binary'});
+
+	var imgData = '';
+    renderStream.on('data', function(data) {
+        file.write(data.toString('binary'), 'binary');
+        imgData += data.toString('base64');
+    });
+    renderStream.on('end', data => {
+        res.send({
+            successful: true,
+            message: 'test',
+            data: {
+                web_shot: imgData
+            }
+        });
+    })
+	next();
+});
+
+
+
+
+
+
+
+
+
+
+
+
 app.use('/', function (req, res, next) {
 
 	// res.render(path.join(__dirname, 'src', 'index.html'), {isProduction: 'production'});
